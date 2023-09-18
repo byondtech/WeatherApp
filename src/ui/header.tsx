@@ -20,6 +20,10 @@ export default function NavigationMenuDemo() {
   const session = useSession();
   const router = useRouter();
 
+  async function handleSignIn(){
+    signIn('google', {callbackUrl: "http://localhost:3000/post"})
+  }
+
   if(!session.data)
   return (
     <div className="mx-auto  py-5">
@@ -38,7 +42,7 @@ export default function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-        <Button className = "text-md " variant={'link'} onClick={() => signIn()}>SignIn </Button>
+        <Button className = "text-md " variant={'link'} onClick={handleSignIn}>SignIn </Button>
           <NavigationMenuContent>
             
           </NavigationMenuContent>
@@ -73,7 +77,7 @@ export default function NavigationMenuDemo() {
         
         <Button className = "text-md " variant={'link'} onClick={async () => {
             await signOut(); // Sign out the user
-            router.push('/'); // Redirect to the home page
+               // Redirect to the home page
           }}>
           SignOut
           </Button>
