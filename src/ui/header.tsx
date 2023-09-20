@@ -48,7 +48,7 @@ export default function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-        <Button className = "text-md hover:bg-[#0b2f47] " variant={'default'} size={"sm"}>Get Started</Button>
+        <Button className = "text-md hover:bg-[#0b2f47] " variant={'default'} size={"sm"} onClick={handleSignIn}>Get Started</Button>
          </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

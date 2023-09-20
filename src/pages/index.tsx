@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Button } from '@/components/ui/button'
-import { useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -12,8 +12,13 @@ import { authOptions } from './api/auth/[...nextauth]'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-const {data: session, status} = useSession();
+const session = useSession();
 const router = useRouter();
+
+async function handleSignIn(){
+
+  signIn('google', {callbackUrl: "http://localhost:3000/post"})
+}
 
   return (
     <div className='block md:flex justify-between items-center'>
@@ -21,7 +26,8 @@ const router = useRouter();
       <h1 className='font-sans text-6xl font-semibold leading-normal'>Your 
       <span className='text-orange-400'> go-to</span> destination <br /> for 
       Weather Updates!</h1>
-      <div className='flex justify-start pl-5 md:justify-start'><Button className='mt-10'>Get Started Now</Button></div>
+      
+      <div className='flex justify-start pl-5 md:justify-start'><Button className='mt-10' onClick={() => (!session.data) ? handleSignIn() : router.push('/post')}>Get Started Now</Button></div>
       
     </div>
     <div className='mt-40 pr-10'>
