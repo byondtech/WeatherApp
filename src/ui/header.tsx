@@ -21,7 +21,7 @@ export default function NavigationMenuDemo() {
   const router = useRouter();
 
   async function handleSignIn(){
-    signIn('google', {callbackUrl: "http://localhost:3000/post"})
+    signIn('google', {callbackUrl: "/post"})
   }
 
   if(!session.data)
