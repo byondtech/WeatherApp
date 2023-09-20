@@ -28,8 +28,7 @@ export default function WeatherCard() {
 
 
   function hydrateImage(x: string[]) {
-
-    console.log(x[0].icon)
+    //@ts-ignore
     const imgUrl = `${process.env.NEXT_WEATHER_IMG_URL}${x[0].icon}@2x.png`
     console.log(imgUrl)
     setWeatherImage(imgUrl)
