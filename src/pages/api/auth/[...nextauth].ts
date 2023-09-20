@@ -10,6 +10,7 @@ export const authOptions: NextAuthOptions = {
             clientSecret: process.env.NEXT_GOOGLE_SECRET as string
         })
     ] as Provider[],
+    secret:process.env.SECRET,
     theme: {
         colorScheme: "dark",
       },
